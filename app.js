@@ -4,6 +4,8 @@ var express = require('express'),
     server = http.createServer(app),
     io = require('socket.io')(server);
 
+
+
 //Express setup
 server.listen(process.env.PORT || 3000);
 app.use(express.static(__dirname + '/client'));
@@ -12,11 +14,13 @@ app.get('/', function(req, res) {
 });
 
 //Sockets Connection Setup
-io.sockets.on('connection', function(){
-  console.log('we have connection');
+// io.sockets.on('connection', function(){
+//   console.log('we have connection');
 
-  // socket.on('disconnect', function(){
-  //   console.log('user disconnected');
-  // });
-});
+//   // socket.on('disconnect', function(){
+//   //   console.log('user disconnected');
+//   // });
+// });
+
+
 
