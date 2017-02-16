@@ -11,8 +11,12 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + '/client/index.html'));
 });
 
-//Sockets Setio
+//Sockets Connection Setup
 io.sockets.on('connection', function(){
   console.log('we have connection');
+
+  // socket.on('disconnect', function(){
+  //   console.log('user disconnected');
+  // });
 });
 
