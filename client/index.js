@@ -21,7 +21,6 @@ var getIndicesOfLetterInWord = function(word, letter){
 
   for(var i = 0; i < word.length; i++){
     if(word[i] === letter.toLowerCase()){
-      console.log(word[i]);
       letterIndices.push(i);
     }
   }
@@ -29,20 +28,25 @@ var getIndicesOfLetterInWord = function(word, letter){
   return letterIndices;
 };
 
-//Displays dashes to letters on index.html
+//Replaces dashes to letters of respective index and returns string with indices and dashes
 var changeDashesToLetters = function(word, indices, letter){
   var displayedChars = document.getElementById("word-display");
   var displayedText = displayedChars.innerText.split("");
   
   for(var i = 0; i < indices.length; i++){
     if(indices[i] === 0){
-      displayedText[i] = letter;
+      displayedText[i] = letter.toUpperCase();
     }else {
-      displayedText[indices[i] * 2] = letter;
+      displayedText[indices[i] * 2] = letter.toUpperCase();
     }
   }
   
   return displayedText.join("");
+}
+
+var displayCorrectLetters = function(str){
+  var textContent = document.getElementById("word-display");
+  textContent.innerHTML = str;
 }
 
 //Tests
@@ -52,6 +56,5 @@ printDashes("HelloWorld");
 // console.log(getIndicesOfLetterInWord("helloyellow", "l"));
 // console.log(getIndicesOfLetterInWord("hello", "t"));
 
-// var n = getIndicesOfLetterInWord("helloworld", "l");
-// console.log(n);
-// console.log(changeDashesToLetters("HelloWord",n, "l"));
+var n = getIndicesOfLetterInWord("helloworld", "l");
+displayCorrectLetters(changeDashesToLetters("HelloWord",n, "l"));
