@@ -14,13 +14,13 @@ app.get('/', function(req, res) {
 });
 
 //Sockets Connection Setup
-// io.sockets.on('connection', function(){
-//   console.log('we have connection');
+io.sockets.on('connection', function(){
+  console.log('we have connection');
 
-//   // socket.on('disconnect', function(){
-//   //   console.log('user disconnected');
-//   // });
-// });
+  // socket.on('disconnect', function(){
+  //   console.log('user disconnected');
+  // });
+});
 
 
 
