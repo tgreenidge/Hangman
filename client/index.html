@@ -6,18 +6,24 @@
     <title>Hangman Game</title>
   </head>
   
-  <body>
-    <div>
-        <h1>Play against Computer Only</h1>
-        <h1>Play against another player </h1>
+  <body class="container-fluid">
+    <div class="options">
+      <h1>Play against Computer only</h1>
+      <h1>Play against another player</h1>
     </div>
-    <div id="word-display">
-      
+
+    <div>
+      <div id="word-display"></div>
+    </div>
+
+    <div>
+      <h2>Incorrect Guesses</h2>
+      <div id="letters-guessed-display"></div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.js"></script>
-    
     <script src="index.js"></script>
+
     <script>
       var socket = io();
     </script>

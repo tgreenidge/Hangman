@@ -44,10 +44,16 @@ var changeDashesToLetters = function(word, indices, letter){
   return displayedText.join("");
 }
 
-var displayCorrectLetters = function(str){
-  var textContent = document.getElementById("word-display");
+var displayLetters = function(str, isCorrectLetter){
+  var textContent;
+  if(isCorrectLetter){
+    textContent= document.getElementById("word-display");
+  } else {
+    textContent= document.getElementById("letters-guessed-display");
+  }
   textContent.innerHTML = str;
 }
+
 
 //Tests
 printDashes("HelloWorld");
@@ -57,4 +63,5 @@ printDashes("HelloWorld");
 // console.log(getIndicesOfLetterInWord("hello", "t"));
 
 var n = getIndicesOfLetterInWord("helloworld", "l");
-displayCorrectLetters(changeDashesToLetters("HelloWord",n, "l"));
+displayLetters(changeDashesToLetters("HelloWord",n, "l"), true);
+displayLetters(changeDashesToLetters("HelloWord",n, "l"), false);
