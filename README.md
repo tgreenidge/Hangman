@@ -3,9 +3,20 @@ Try to beat the computer in this game of Hangman
 
 
 
-# Instructions to download create dictionary
+# Instructions to create  a different list of words that is found in the dictionaryWords.js file
+   Manipulate the parameters for the API to select your preferences
    API:
    Parameters: 
+
+  - From the root folder of the project, type the following in the command line:
+
+ ``` node dictionary.js ```
+
+  - This will replace the file in the **client** folder called **dictionaryWords.js**
+  
+  ** Modify below**
+  - Go to **client/dictionaryWords.js** file, and assign the to the beginning of the array
+
 
 # Instructions to get app running
 
@@ -46,6 +57,9 @@ Ranks players based on number of correctly solved words average time to solve ch
 - Express
 - Twitter Bootstrap
 - Socket.io
+- Github
 - Heroku
 - PostgresSQL
+- Waffle.io
+
 

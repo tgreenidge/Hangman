@@ -11,19 +11,25 @@ var request = require('request'),
 */
 var url = 'http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words?difficulty=1|difficulty=1&minLength=4&maxLength=8';
 
-
-
 //** TO DO  save dictionary
 request(url, function(error, response, body){
   if(error){
-    console.log(error);
+    throw error;
   }else{
     if(response.statusCode === 200){
-      var temp  = body;
+      
+      //Save the dictionary words to an array
+      var words = JSON.stringify(body.split('\n'));
 
-      // need to be able to get temp;
-      console.log(temp.split('\n').length);
+      //Save the words in a file called dictionaryWords.js to be used for game play
+      fs.writeFile('./client/dictionaryWords.js', words, (error) => {
+        if (error) throw error;
+        console.log('Words are saved to words file!');
+      });
+    
     }
   }
 });
+
+
 
