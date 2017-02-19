@@ -16,9 +16,8 @@ request(url, function(error, response, body){
     if(response.statusCode === 200){
       
       //Save the dictionary words to an array
-      var obj =  {words: body.split('\n')} ;
-      å
-      var file = './client/dictionaryWords.json';
+      var obj =  {words: body.split('\n')};
+      var file = './client/dictionary/dictionaryWords.json';
 
       //Save the words in a json file called dictionaryWords.json to be used for game play
       jsonfile.writeFile(file, obj, function(error) {
