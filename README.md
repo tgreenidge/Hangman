@@ -48,6 +48,21 @@ https://hangman-extreme.herokuapp.com/
 ## Leader Board
 Ranks players based on number of correctly solved words average time to solve challenges.
 
+
+
+# Process
+ I wanted to create features that allow me to utilize JavaScript/Nodejs, Databases, and Sockets. I intially started working on pieces of the requirements that were to be
+
+ 1. Creation of basic game play functions, with tests on UI to ensure required components were displayed
+ 2. Creation of a dictionary
+ 3. Initial mock up of UI to test game play functionality when a game option was chosen
+ 4. Develop/Test Game object and methods
+ 5. Develop/Test Player object
+ 6. Integrate Game/Player functionality
+ 7. Integrate Game/Player Functionality with UI
+ 8. Add user database
+ 9. Display LeaderBoard
+
 # Techology Stack
 - Node.js
 - Express
@@ -58,8 +73,7 @@ Ranks players based on number of correctly solved words average time to solve ch
 - PostgresSQL
 - Waffle.io
 
-
-#Future Enhancement
+# Ideas for Future Enhancement
 
 Enable game play among other players using sockets. This option will only be shown if there are other members connected to the app. 
  - The computer choses a word
