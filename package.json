@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/tgreenidge/Hangman#readme",
   "dependencies": {
+    "body-parser": "^1.16.1",
     "express": "^4.14.1",
     "jsonfile": "^2.4.0",
     "request": "^2.79.0",

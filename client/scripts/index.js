@@ -7,6 +7,7 @@ function postPresentYear(){
   year.innerText = new Date().getFullYear();
 };
 
+
 // Print dashes on screen that corresponds with word length
 var printDashes = function (word){
   var letters = document.getElementById("word-display");

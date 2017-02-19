@@ -4,26 +4,73 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hangman Game</title>
+
+    <!-- BOOTSTRAP css cdn-->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+
+    <!-- change to include file for css-->
+    <link rel="stylesheet" href="./styles/index.css">
   </head>
   
-  <body class="container-fluid">
-    <div class="options">
-      <h1>Play against Computer only</h1>
-      <h1>Play against another player</h1>
-    </div>
+  <body class="container-fluid" onload="postPresentYear()">
+    <nav>
+    </nav>
 
-    <div>
-      <div id="word-display"></div>
-    </div>
+    <div class="container">
+      <div class="row hero">
+        Hangman
 
-    <div>
-      <h2>Incorrect Guesses</h2>
-      <div id="letters-guessed-display"></div>
-    </div>
+      </div>
 
+      <!-- Player Options -->
+      <div class="row game-options">
+        <button type="button" class="btn btn-primary btn-lg btn-block">
+          Play Against Computer
+        </button>
+        <button type="button" class="btn btn-warning btn-lg btn-block">
+          Play Live Against Another Player
+        </button>
+        <button type="button" class="btn btn-info btn-lg btn-block">
+          View LeaderBoard
+        </button>
+      </div>
+    
+      <!-- Word in Play-->
+      <div class="row" id="word-display">
+        <div >
+          
+        </div>
+      </div>
+
+      <!-- In Game Statistics -->
+      <div class="row game-stats">
+        <div class="col-xs-6 col-md-4" id="letters-guessed-display">
+          <h4>Incorrect Guesses </h4>
+          <p></p>
+        </div>
+      
+        <div class="col-xs-6 col-md-4" id="letters-remaining-display">
+          <h4>Remaining Guesses </h4>
+          <p><span></span> of 6</p>
+        </div>
+        
+        <div class="col-xs-6 col-md-4" id="time-elapsed-display">
+          <h4>Time Elapsed </h4>
+          <p></p>
+        </div>
+      </div>
+
+      <div class="leader-board">
+      </div>
+    </div>
+    
+    <!--Uses Bootstrap's class to stick footer at bottom of page-->
+    <footer class="navbar navbar-inner  navbar-fixed-bottom"> <p>Tisha Greenidge &copy;<span id="copyright-year"></span></p></footer>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.js"></script>
-    <script src="index.js"></script>
-
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+    <script src="./scripts/index.js"></script>
     <script>
       var socket = io();
     </script>
