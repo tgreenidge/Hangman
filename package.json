@@ -18,7 +18,9 @@
   "homepage": "https://github.com/tgreenidge/Hangman#readme",
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "browsify": "0.0.4",
     "express": "^4.14.1",
+    "jsonfile": "^2.4.0",
     "request": "^2.79.0",
     "socket.io": "^1.7.2"
   },

@@ -1,6 +1,7 @@
 //This file contains the code to generate a dictionary
 var request = require('request'),
-         fs = require('fs');
+         fs = require('fs'),
+         jsonfile = require('jsonfile');
 
 /* 
   API URL that filters all words with
@@ -19,13 +20,19 @@ request(url, function(error, response, body){
     if(response.statusCode === 200){
       
       //Save the dictionary words to an array
-      var words = JSON.stringify(body.split('\n'));
+      var obj =  {words: body.split('\n')} ;
+      
 
       //Save the words in a file called dictionaryWords.js to be used for game play
-      fs.writeFile('./client/dictionaryWords.js', words, (error) => {
-        if (error) throw error;
-        console.log('Words are saved to words file!');
-      });
+      var file = './client/dictionaryWords.json';
+
+      jsonfile.writeFile(file, obj, function(error) {
+        console.dir(error);
+      })
+      // fs.writeFile(file, words, (error) => {
+      //   if (error) throw error;
+      //   console.log('Words are saved to Dictionary file!');
+      // });
     
     }
   }

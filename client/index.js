@@ -1,17 +1,25 @@
 
 //var socket = io();
 
+//Displays the current year in the footer of the Index.html
+function postPresentYear(){
+  var year = document.getElementById("copyright-year");
+  year.innerText = new Date().getFullYear();
+};
+
 // Print dashes on screen that corresponds with word length
 var printDashes = function (word){
   var letters = document.getElementById("word-display");
   var dashes = "";
+
   for(var i = 0; i < word.length; i++){
     if(i === word.length -1){
-        dashes += "_";
+      dashes += "_";
     }else{
-        dashes += "_" + " ";
+      dashes += "_" + " ";
     }
   }
+  
   letters.innerHTML = dashes;
 };
 
@@ -44,24 +52,52 @@ var changeDashesToLetters = function(word, indices, letter){
   return displayedText.join("");
 }
 
+//Displays the string as either the correct letters in word or incorrectly guessed letters
 var displayLetters = function(str, isCorrectLetter){
   var textContent;
+
   if(isCorrectLetter){
     textContent= document.getElementById("word-display");
   } else {
     textContent= document.getElementById("letters-guessed-display");
   }
+
   textContent.innerHTML = str;
-}
+};
+
+var secretWord;
+
+
+var getDictionaryWord = function(randNum){
+  //This function get the word in the dictionary that corresponds with the random number and sets
+  // the secret word to that word
+  $.ajax({
+    url: 'dictionaryWords.JSON',
+    dataType:'JSON',
+    success:function(data){
+      secretWord = data.words[randNum];
+    },
+    error:function(){
+      console.log(error);
+    }
+  });
+};
 
 
 //Tests
-printDashes("HelloWorld");
+//printDashes("HelloWorld");
 
 // console.log(getIndicesOfLetterInWord("hello", "e"));
 // console.log(getIndicesOfLetterInWord("helloyellow", "l"));
 // console.log(getIndicesOfLetterInWord("hello", "t"));
 
-var n = getIndicesOfLetterInWord("helloworld", "l");
-displayLetters(changeDashesToLetters("HelloWord",n, "l"), true);
-displayLetters(changeDashesToLetters("HelloWord",n, "l"), false);
+// var n = getIndicesOfLetterInWord("helloworld", "l");
+// displayLetters(changeDashesToLetters("HelloWord",n, "l"), true);
+// displayLetters(changeDashesToLetters("HelloWord",n, "l"), false);
+
+
+console.log(getDictionaryWord(1));
+
+//getgetDictionaryWord(randomNum);
+//ToDo
+
