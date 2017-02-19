@@ -34,17 +34,13 @@ https://hangman-extreme.herokuapp.com/
 
 
 ## Game Player Options
-### Play against the computer only
+### Play against the computer 
 - The computer choses a word
 - If the player does not guess correctly under 6 tries, the computer wins
 
 
-### Play against the computer and another player that is connected
+### Play against the clock
 
-This option will only be shown if there are other members connected to the app. 
- - The computer choses a word
- - The first player that solves first under 6 guesses wins.
- - If no player guesses correctly under 6 tries, the computer wins
 
 ### Word Lengths 
 - 4 to 8 letters
@@ -62,4 +58,11 @@ Ranks players based on number of correctly solved words average time to solve ch
 - PostgresSQL
 - Waffle.io
 
+
+#Future Enhancement
+
+Enable game play among other players using sockets. This option will only be shown if there are other members connected to the app. 
+ - The computer choses a word
+ - The first player that solves first under 6 guesses wins.
+ - If no player guesses correctly under 6 tries, the computer wins
 
