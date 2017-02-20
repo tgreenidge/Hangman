@@ -33,17 +33,24 @@ Play game online at:
 https://hangman-extreme.herokuapp.com/
 
 
-## Game Player Options
+## Game Rules
 ### Play against the computer 
 - The computer choses a word
 - If the player does not guess correctly under 6 tries, the computer wins
+- On each try, player can guess either a letter or a word
 
+### Guesses
+If player tries to solve the answer by guessing the word:
+  - If the word is correct, the player wins the game
+  - If the word is incorrect, no letters are revealed in the answer
 
-### Play against the clock
+If player tries to solve the answer by guessing one letter at a time:
+  - Correct letters in the answer are revealed in their correct positions
+  - Incorrect letter guesses are displayed under "Incorrect Guesses on page"
 
 
 ### Word Lengths 
-- 4 to 8 letters
+- The words are of 4 to 8 letters only
 
 ## Leader Board
 Ranks players based on number of correctly solved words average time to solve challenges.

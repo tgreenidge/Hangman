@@ -16,33 +16,71 @@
   
   <body class="container-fluid" onload="postPresentYear()">
     <nav>
+
     </nav>
 
     <div class="container">
-      <div class="row hero">
-        <h1>Hangman</h1>
+      <div id="hangman-symbol" class="man">
+        <div class="man head"></div>
+        <div class="man torso"></div>
+        <div class="man left-hand"></div>
+        <div class="man right-hand"></div>
+        <div class="man feet"></div>
       </div>
 
       <!-- Player Options -->
       <div class="row" id="game-options">
+        <!-- If different types of games are added increment value example value="option2"-->
         <button type="button" class="btn btn-primary btn-lg btn-block" value="option1" onclick="startGame(this)">
           Play Against Computer
         </button>
-        <button type="button" class="btn btn-warning btn-lg btn-block" value="option2" onclick="startGame(this)">
-          Play Against The Clock
-        </button>
+
+        <!-- Leader Board-->
         <button type="button" class="btn btn-info btn-lg btn-block" value="leader-board" onclick="showLeaderBoard()">
           View LeaderBoard
         </button>
+
+        <!-- Rules should be toggled to view or hide-->
+        <button type="button" class="btn btn-warning btn-lg btn-block toggle-rules" id="toggle-rules"value="rules" onclick="toggleRules()">
+          See Rules
+        </button>
+
+        <label id="label-for-rules"></label>
+
+        <div id="rules-explanation">
+          <h3 class="header">Rules</h3>
+          Play against the computer
+          <ul>
+            <li> The computer choses a word</li>
+            <li>If the player does not guess correctly under 6 tries, the computer wins</li>
+            <li>On each try, player can guess either a letter or a word</li>
+          </ul>
+
+          <h4>Guesses</h4>
+          If player tries to solve the answer by guessing the word:
+          <ul>
+            <li> If the word is correct, the player wins the game </li>
+            <li> If the word is incorrect, no letters are revealed in the answer</li>
+          </ul>
+
+          If player tries to solve the answer by guessing one letter at a time:
+          <ul>
+            <li>Correct letters in the answer are revealed in their correct positions</li>
+            <li>Incorrect letter guesses are displayed under "Incorrect Guesses on page"</li>
+          </ul>
+
+          <h4>Word Lengths</h4> 
+          <ul><li> The words are of 4 to 8 letters in length only </li></ul>
+        </div>
       </div>
 
-      <!-- Hangman Drawing-->
+      <!-- Hangman Animation-->
       <div class="jumbotron" id="hanging-man">
       </div>
     
       <!-- Word in Play-->
       <div class="row">
-        <div class="jumbotron" id="word-display"></div>
+        <div class="jumbotron" id="word-display">Hangman</div>
         <button type="button" id="end-game-button" class="btn btn-warning" onclick="endGame()">End Game</button>
       </div>
 

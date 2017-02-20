@@ -12,6 +12,12 @@ function showLeaderBoard(){
   socket.emit('getLeaders');
 }
 
+//Rules appear/hide when user requests to see rules
+function toggleRules(){
+
+}
+
+
 //Triggers game start
 function startGame(button){
   //get option from value
