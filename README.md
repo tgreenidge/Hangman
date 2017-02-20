@@ -1,5 +1,6 @@
 # Hangman
-Try to beat the computer in this game of Hangman
+This is a web browser version of the popular game Hangman. Built with Nodejs on an Express server,
+this game utilizes sockets(Socket.io) to facilitate real time changes during game play. 
 
 
 
@@ -82,7 +83,7 @@ Ranks players based on number of correctly solved words average time to solve ch
 
 # Ideas for Future Enhancement
 
-Enable game play among other players using sockets. This option will only be shown if there are other members connected to the app. 
+Enable multiplayer game among other players on the web using sockets. This option will only be shown if there are other members connected to the app. 
  - The computer choses a word
  - The first player that solves first under 6 guesses wins.
  - If no player guesses correctly under 6 tries, the computer wins
