@@ -1,8 +1,28 @@
 
-footer p, .game-stats {
+.game-stats {
+  text-align: center;
+  font-size: 3em;
+}
+
+#word-display {
+  text-align: center;
+  font-size: 4em;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+footer {
   text-align: center;
 }
 
+#end-game-button, .leader-board, #hanging-man, #user-input {
+  display: none;
+}
 
-
-
+#end-game-button {
+  margin: 0 auto;
+}
