@@ -31,5 +31,10 @@ footer {
   padding: 10px 300px !important;
 }
 
+img {
+  height: 80%;
+  width: 20%;
+  display: inline;
+}
 
  
