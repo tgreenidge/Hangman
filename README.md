@@ -5,9 +5,9 @@ this game utilizes sockets(Socket.io) to facilitate real time changes during gam
 **Play game online at:**
 https://hangman-extreme.herokuapp.com/
 
+### Command Line App
+An command line version of this game is currently in development, and can be forked or cloned from [github](https://github.com/tgreenidge/Hangman).
 
-**There is a command line version of this game for download at:**
-https://github.com/tgreenidge/HangmanCLI
 
 # Instructions to get web app running on local machine
 

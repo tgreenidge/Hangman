@@ -1,5 +1,5 @@
 //This file contains the code to generate a dictionary
-var request = require('request'),
+var request  = require('request'),
     jsonfile = require('jsonfile'); 
 
 /* API URL that filters all words with
