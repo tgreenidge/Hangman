@@ -2,10 +2,14 @@
 This is a web browser version of the popular game Hangman. Built with Nodejs on an Express server,
 this game utilizes sockets(Socket.io) to facilitate real time changes during game play. 
 
-Play game online at:
+**Play game online at:**
 https://hangman-extreme.herokuapp.com/
 
-# Instructions to get app running on local machine
+
+**There is a command line version of this game for download at:**
+https://github.com/tgreenidge/HangmanCLI
+
+# Instructions to get web app running on local machine
 
 - Clone project or fork from this repository
 - Install [nodejs](https://nodejs.org/en/)
@@ -34,11 +38,7 @@ Parameters: see document for online parameters
 
 ``` node dictionary.js ```
 
-- This will replace the file in the **client** folder called **dictionaryWords.js**
-
-** Modify below**
-- Go to **client/dictionaryWords.js** file, and assign the to the beginning of the array
-
+- This will replace the file in the **dictionary** folder called **dictionaryWords.js**
 
 # Game Play
 
