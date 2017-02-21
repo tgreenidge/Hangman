@@ -14,7 +14,12 @@ function showLeaderBoard(){
 
 //Rules appear/hide when user requests to see rules
 function toggleRules(){
-
+  var rules = document.getElementById('rules-explanation');
+  if(rules.style.display === 'block'){
+    rules.style.display = 'none';
+  }else {
+    rules.style.display = 'block';
+  }
 }
 
 
@@ -27,18 +32,16 @@ function startGame(button){
   var gameOptions = document.getElementById('game-options');
   gameOptions.style.display = 'none';
 
-  //show user-input box
-  var userInput = document.getElementById('user-input');
-  userInput.style.display = 'block';
-
-  //emit gameStart to backend with option values
-  socket.emit('gameStart', {option: option});
-
-
   //show End Game Submit button
   var endButton = document.getElementById('end-game-button');
   endButton.style.display = 'block';
 
+  //display the word "Hangman" in the nav
+  var navBar = document.getElementById('nav-bar');
+  navBar.innerHTML = '<h1>Hangman</h1>';
+
+  //emit gameStart to backend with option values
+  socket.emit('gameStart', {option: option});
 };
 
 //Triggers Game end
@@ -120,7 +123,12 @@ socket.on('displayLeaderBoard', function(data){
   //display on board
 });
 
-
+socket.on('showInputTextBoxes', function(){
+  //show user-input box
+  var userInput = document.getElementById('user-input');
+  userInput.style.display = 'block';
+  socket.emit('finishedShowInputTextBoxes');
+})
 
 // Print dashes on screen that corresponds with word length
 socket.on('printDashes', function (data){
@@ -169,6 +177,14 @@ socket.on('startClock', function(){
   var startTime; 
 });
 
+//test for socket in game play...............REMOVE ME
+socket.on('sayHi', function(){
+  alert("HI");
+});
 
-
+socket.on('displayGuessesRemaining', function(data){
+  var guessesRemaining = document.getElementById('guesses-remaining-text');
+  guessesRemaining.innerHTML = data.guessesRemaining;
+  //console.log(guessesRemaining.innerText);
+});
 

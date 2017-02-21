@@ -4,7 +4,8 @@ var express     = require('express'),
     server      = http.createServer(app),
     io          = require('socket.io')(server),
     bodyParser  = require('body-parser'),
-    dictionary  = require('./dictionary/dictionaryWords');
+    dictionary  = require('./dictionary/dictionaryWords'),
+    Promise     = require ('bluebird');
 
 //---------------------------------Express setup---------------------------------\\
 server.listen(process.env.PORT || 3000);
@@ -39,38 +40,24 @@ io.on('connection', function(socket){
     
     //set secret word that player has to guess
     var secretWord = dictionary.words[randomNumber];
-  
-    // Print dashes on screen that corresponds with word length
-    // Don't send object to prevent user access in browser tools
-    io.emit('printDashes',  {wordLength: secretWord.length});
+
+    //!!!!!!!!!! Change this to get info from front end
+    var player = "Tisha"
 
     //start clock
     io.emit('startClock');
     
-    //show input box for word
+    // create a new game and pass in option and word, player, and socket
+    var thisGame = new HangmanGame(option, secretWord, player, socket);
 
-    // create a new game
-    // //Loop for 6 guesses
-    // var numGuessesRemaining = 6;
-
-    // while(numGuesses >= 1 ){
-    //   //get input from user
-    //   //check to see if input
-    //   if(option === "option1"){
-
-    //   } else {
-
-    //   }
-    // }
+    thisGame.startGame();
+    
     io.on('stopGame', function(){
       //
 
     });
 
-    io.on('setUserInput', function(data){
-      //call appropriate game function
-
-    });
+    
 
     //this test works
     //io.emit('changeDashesToLetters', {indices: [2, 3], letter: "l"});
@@ -86,36 +73,107 @@ io.on('connection', function(socket){
 });
 
 
-//-------------------------------Game Play Functions-----------------------------------------\\
+//-------------------------------Hangman Game and Methods-----------------------------------------\\
 
-function gameFlow(){
-  var guessesRemaining = 6;
-  while (guessesRemaining >= 0){
-    //display get input from user
-
-  }
+function HangmanGame (option, secretWord, player, gameSocket) {
+  this.maxGuesses = 6;
+  this.secretWord = secretWord;
+  this.timeStarted; //build into start game !!!!!!!!!!!!!!
+  this.timeEnded;
+  this.player = player;
+  this.socket = gameSocket;
 };
 
-//Determines the indices of all letter occurances in a word
-function getIndicesOfLetterInWord(wordData, letterData){
-  var letterIndices = [];
+HangmanGame.prototype.startGame = function() {
+  console.log("Game has Started")
+  console.log(this.secretWord) //REMOVE ME
+  //start clock function  TODOOOOOO!!!!!!!!!
+  
+  var guessesRemaining = this.maxGuesses;
+  
+  // Print dashes on screen that corresponds with word length
+  this.socket.emit('printDashes', {wordLength: this.secretWord.length});
 
-  for(var i = 0; i < data1.word.length; i++){
-    if(wordData.word[i] === letterData.toLowerCase()){
+
+  while (guessesRemaining) {
+    //display the number of guesses Remaining for this game
+    this.socket.emit('displayGuessesRemaining', {guessesRemaining: guessesRemaining});
+
+    
+    //display unsolved letters ..... TODO!!!!
+
+    //show Input text Boxes
+    this.socket.emit('showInputTextBoxes');
+    
+
+    var userInput;
+
+    // //get user input
+    this.socket.on('setUserInput', function(data, cb){
+      console.log("here", guessesRemaining);
+      userInput = data;
+      cb(null, 'done');
+      // this.socket.emit('finishedsetUserInput');
+    });
+
+    // this.socket.on('finishedsetUserInput', function(){
+    //   //do nothing
+    //   //this is here to wait ensure user input is received
+    // });
+
+
+
+    // var indicesOfLetterInWord;
+    // //process User input
+    // if(userInput.letter){
+    //   indicesOfLetterInWord = this.getIndicesOfLetterInWord(userInput.letter);
+      
+    //   //if the user guessed a correct letter
+    //   if(indicesOfLetterInWord.length){
+        
+
+    //   }else{
+    //     //send letter to be posted to incorrect letters on frontend
+    //     this.socket.emit('displayLetters', {str: userInput.letter, isCorrectLetter: false});
+    //   }
+
+    // }else{
+    //   //userInput is a word, so check against secretWord
+    //   if(userInput.word.toLowerCase === secretWord.toLowerCase){
+    //     //end game and emit winner
+    //     //this.socket.emit()
+    //   }
+    // }
+    
+
+  
+    guessesRemaining--;
+  }
+  //Loop is done before correct guesses
+    //call stop game
+}
+
+//Determines the indices of all letter occurances in a word
+HangmanGame.prototype.getIndicesOfLetterInWord = function(letter) {
+  var letterIndices = [];
+  for(var i = 0; i < this.secretWord.length; i++){
+    if(this.secretWord[i] === letter.toLowerCase()){
       letterIndices.push(i);
     }
   }
-  return letterIndices;
-};
+  return letterIndices; //chane return to emit?? 
+}
 
 
-//Game.prototype.stop = function(){
+
+HangmanGame.prototype.stopGame =  function(){
   //save time to database Only if winner is the player
   //If option 1 
     //grab time from dom and save to database
   //If option 2
     //grab time from dom and
-//}
+  //emit winner info
+}
 
 
 

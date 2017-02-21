@@ -15,11 +15,12 @@
   </head>
   
   <body class="container-fluid" onload="postPresentYear()">
-    <nav>
-
-    </nav>
+    
 
     <div class="container">
+      <nav id="nav-bar">
+      </nav>
+
       <div id="hangman-symbol" class="man">
         <div class="man head"></div>
         <div class="man torso"></div>
@@ -44,12 +45,11 @@
         <button type="button" class="btn btn-warning btn-lg btn-block toggle-rules" id="toggle-rules"value="rules" onclick="toggleRules()">
           See Rules
         </button>
-
-        <label id="label-for-rules"></label>
-
-        <div id="rules-explanation">
-          <h3 class="header">Rules</h3>
-          Play against the computer
+      </div>
+      <div id="rules-explanation">
+        <div class="container">
+        <div class="row">
+          <h4>Play against the computer</h4>
           <ul>
             <li> The computer choses a word</li>
             <li>If the player does not guess correctly under 6 tries, the computer wins</li>
@@ -71,8 +71,11 @@
 
           <h4>Word Lengths</h4> 
           <ul><li> The words are of 4 to 8 letters in length only </li></ul>
+          
+          <button type="button" class="btn btn-warning" value="rules"  onclick="toggleRules()">Hide Rules</button>
         </div>
       </div>
+    </div>
 
       <!-- Hangman Animation-->
       <div class="jumbotron" id="hanging-man">
@@ -92,9 +95,9 @@
             <p></p>
           </div>
         
-          <div class="col-xs-12 col-md-4" id="letters-remaining-display">
+          <div class="col-xs-12 col-md-4" id="guesses-remaining-display">
             <h3>Remaining Guesses</h3>
-            <p><span></span> 6</p>
+            <p id="guesses-remaining-text"></p>
           </div>
           
           <div class="col-xs-12 col-md-4" id="time-elapsed-display">
